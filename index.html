@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Milk Classic — Корейский бестселлер среди снеков</title>
+    <meta name="description" content="Рисовые снеки Milk Classic — один из самых популярных снеков Кореи. Нежный, мягкий и тающий во рту. 3 вкуса: Молоко, Банан, Сыр.">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --brand-red: #f30808;
+            --brand-blue: #0454c3;
+            --brand-yellow: #fea900;
+            --cosmic-orange: #FF4500;
+        }
+        
+        body {
+            font-family: 'Poppins', 'Inter', sans-serif;
+        }
+        
+        .brand-gradient {
+            background: linear-gradient(135deg, var(--brand-red) 0%, var(--brand-blue) 50%, var(--brand-yellow) 100%);
+        }
+        
+        .hero-gradient {
+            background: linear-gradient(135deg, rgba(243, 8, 8, 0.9) 0%, rgba(4, 84, 195, 0.8) 50%, rgba(254, 169, 0, 0.7) 100%);
+        }
+        
+        .texture-gradient {
+        background-image:
+            linear-gradient(45deg, rgba(254,169,0,0.10), rgba(4,84,195,0.10)),
+            url('images/gradient-bg-2.jpg');
+        background-position: center, center;
+        background-size: cover, cover;
+        background-repeat: no-repeat, no-repeat;
+        }
+
+        
+        .flavors-bg {
+            background: url('images/gradient-bg-3.jpg') center/cover;
+        }
+        
+        .stats-bg {
+            background: url('images/gradient-bg-4.jpg') center/cover, linear-gradient(135deg, rgba(243, 8, 8, 0.9), rgba(4, 84, 195, 0.9));
+        }
+        
+        .card-shadow {
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15), 0 0 0 1px rgba(255, 255, 255, 0.1);
+        }
+        
+        .neo-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .text-shadow {
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+        }
+        
+        .hover-scale {
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        
+        .hover-scale:hover {
+            transform: scale(1.08) rotate(2deg);
+        }
+        
+        .pulse-glow {
+            animation: pulseGlow 3s ease-in-out infinite;
+        }
+        
+        @keyframes pulseGlow {
+            0%, 100% {
+                box-shadow: 0 0 20px rgba(254, 169, 0, 0.4);
+            }
+            50% {
+                box-shadow: 0 0 40px rgba(254, 169, 0, 0.8), 0 0 60px rgba(243, 8, 8, 0.4);
+            }
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .fade-in-up {
+            animation: fadeInUp 1s ease-out forwards;
+        }
+        
+        .health-badge {
+            background: linear-gradient(135deg, #10b981, #059669);
+        }
+        
+        .genz-vibe {
+            background: linear-gradient(135deg, #8b5cf6, #a855f7, #ec4899);
+        }
+        
+        .floating {
+            animation: floating 3s ease-in-out infinite;
+        }
+        
+        @keyframes floating {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-900">
+    <!-- Header -->
+    <header class="brand-gradient text-white py-4 sticky top-0 z-50 shadow-2xl backdrop-blur-md">
+        <nav class="container mx-auto px-4 flex items-center justify-between">
+            <a href="/" class="flex items-center space-x-3" aria-label="Atlantys — на главную">
+            <div class="p-2 bg-white bg-opacity-20 rounded-xl">
+                <i class="fas fa-star text-2xl" style="color: var(--brand-yellow);"></i>
+            </div>
+            <img
+                src="./images/logo.png"
+                alt="Atlantys"
+                class="h-14 w-auto object-contain"
+                decoding="async"
+                fetchpriority="high"
+            >
+            </a>
+
+
+            <button id="orderBtn" class="bg-white text-red-600 px-8 py-3 rounded-full font-bold hover:bg-opacity-90 transition-all duration-300 pulse-glow" style="color: var(--brand-red);">
+                <i class="fas fa-shopping-cart mr-2"></i>Заказать
+            </button>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-screen flex items-center overflow-hidden">
+        <!-- Background Image with Overlay -->
+        <div class="absolute inset-0">
+            <img src="images/genz-hero.jpg" alt="Gen-Z enjoying Milk Classic" class="w-full h-full object-cover">
+            <div class="absolute inset-0 hero-gradient"></div>
+        </div>
+        
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <!-- Left Content -->
+                <div class="text-white">
+                    <div class="mb-6">
+                        <span class="relative -top-8 sm:-top-10 md:-top-12
+                                    inline-flex items-center px-6 py-2.5 rounded-full font-extrabold
+                                    tracking-normal md:tracking-[0.01em] lg:tracking-[0.02em]
+                                    whitespace-nowrap leading-none
+                                    text-[clamp(14px,3.8vw,24px)]
+                                    bg-white bg-opacity-20 backdrop-blur-md mb-4 z-10">
+                        <i class="fas fa-fire mr-3" style="color: var(--cosmic-orange);"></i>
+                        КОРЕЙСКИЙ БЕСТСЕЛЛЕР #1
+                        </span>
+
+ 
+                        <div class="flex items-center space-x-3 mb-6">
+                            <div class="health-badge px-3 py-1 rounded-full text-white text-xs font-bold">
+                                <i class="fas fa-leaf mr-1"></i>100% НАТУРАЛЬНО
+                            </div>
+                            <div class="genz-vibe px-3 py-1 rounded-full text-white text-xs font-bold">
+                                <i class="fas fa-heart mr-1"></i>GEN-Z ОДОБРЕНО
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h1 class="text-5xl md:text-7xl font-black mb-6 text-shadow leading-tight">
+                        <span class="block">Рисовые</span>
+                        <span class="block" style="color: var(--brand-yellow);">снеки</span>
+                        <span class="block text-3xl md:text-4xl font-bold mt-2">MILK CLASSIC</span>
+                    </h1>
+                    
+                    <p class="text-xl md:text-2xl mb-8 font-medium leading-relaxed">
+                        Нежный, мягкий и тающий во рту 🤤<br>
+                        <span class="text-lg opacity-90">Снек который покорил Корею теперь в Казахстан!</span>
+                    </p>
+                    
+                    <div class="flex flex-col sm:flex-row gap-4 mb-8">
+                        <button id="heroOrderBtn" class="px-8 py-4 rounded-full font-bold text-lg transition-all duration-300 hover-scale pulse-glow" style="background: var(--brand-yellow); color: #000;">
+                            <i class="fas fa-rocket mr-2"></i>Попробовать сейчас
+                        </button>
+                       <button
+                        id="watchVideoBtn"
+                        onclick="window.open('https://www.youtube.com/watch?v=LFueHJciS1A','_blank','noopener,noreferrer')"
+                        class="px-8 py-4 bg-white bg-opacity-20 backdrop-blur-md rounded-full font-bold text-lg hover:bg-opacity-30 transition-all duration-300"
+                        >
+                            <i class="fas fa-play mr-2"></i>Смотреть видео
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Right Content - Health & Gen-Z Benefits -->
+                <div class="space-y-6">
+                    <div class="neo-card p-6 rounded-2xl card-shadow hover-scale">
+                        <div class="flex items-start space-x-4">
+                            <div class="p-3 rounded-full" style="background: linear-gradient(135deg, var(--brand-red), var(--cosmic-orange));">
+                                <i class="fas fa-heartbeat text-white text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold mb-2" style="color: var(--brand-red);">Для заботливых мам</h3>
+                                <p class="text-gray-700">Никаких искусственных добавок. Только натуральные ингредиенты для ваших детей.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="neo-card p-6 rounded-2xl card-shadow hover-scale">
+                        <div class="flex items-start space-x-4">
+                            <div class="p-3 rounded-full" style="background: linear-gradient(135deg, var(--brand-blue), var(--brand-yellow));">
+                                <i class="fas fa-bolt text-white text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold mb-2" style="color: var(--brand-blue);">Gen-Z энергия</h3>
+                                <p class="text-gray-700">Идеальный снек для учебы, работы или просто чилла с друзьями.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="neo-card p-6 rounded-2xl card-shadow hover-scale">
+                        <div class="flex items-start space-x-4">
+                            <div class="p-3 rounded-full health-badge">
+                                <i class="fas fa-shield-alt text-white text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold mb-2 text-green-600">Здоровый выбор</h3>
+                                <p class="text-gray-700">Запеченные, не жареные. Без чувства вины за каждый кусочек!</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Floating Elements -->
+        <div class="absolute top-20 right-20 floating">
+            <div class="w-16 h-16 rounded-full opacity-20" style="background: var(--brand-yellow);"></div>
+        </div>
+        <div class="absolute bottom-32 left-20 floating" style="animation-delay: 1s;">
+            <div class="w-12 h-12 rounded-full opacity-20" style="background: var(--brand-red);"></div>
+        </div>
+    </section>
+
+    <!-- Texture Section -->
+    <section id="texture"
+         class="pt-12 sm:pt-16 md:pt-20 pb-20 px-4 texture-gradient relative overflow-hidden -mt-6 sm:-mt-8 md:-mt-10 scroll-mt-24 md:scroll-mt-32">
+        <div class="container mx-auto relative z-10">
+            <div class="text-center mb-16">
+                <h2 class="text-5xl font-black mb-6" style="color: var(--brand-blue);">
+                    <i class="fas fa-magic mr-4" style="color: var(--cosmic-orange);"></i>
+                    УНИКАЛЬНАЯ ТЕКСТУРА
+                </h2>
+                <p class="text-xl font-semibold text-gray-700 max-w-3xl mx-auto">
+                    Секретная корейская технология делает каждый кусочек незабываемым 🇰🇷✨
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <div class="space-y-8">
+                    <div class="neo-card p-8 rounded-3xl card-shadow hover-scale">
+                        <div class="flex items-start space-x-6">
+                            <div class="p-4 rounded-2xl" style="background: linear-gradient(135deg, var(--brand-red), var(--cosmic-orange));">
+                                <i class="fas fa-clock text-white text-2xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-2xl font-bold mb-3" style="color: var(--brand-red);">24/7 готов к перекусу</h4>
+                                <p class="text-gray-700 text-lg leading-relaxed">Утром с кофе ☕ В обед на работе 💼 Ночью за сериалом 📺 — всегда идеальный момент!</p>
+                                <div class="mt-4 flex items-center space-x-2 text-sm font-medium" style="color: var(--brand-yellow);">
+                                    <i class="fas fa-star"></i>
+                                    <span>Мамы одобряют для детей</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="neo-card p-8 rounded-3xl card-shadow hover-scale">
+                        <div class="flex items-start space-x-6">
+                            <div class="p-4 rounded-2xl" style="background: linear-gradient(135deg, var(--brand-blue), var(--brand-yellow));">
+                                <i class="fas fa-atom text-white text-2xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-2xl font-bold mb-3" style="color: var(--brand-blue);">K-технология выпечки</h4>
+                                <p class="text-gray-700 text-lg leading-relaxed">Инновационный процесс создает воздушную текстуру: сначала хрустит 🔊 потом тает 😋</p>
+                                <div class="mt-4 flex items-center space-x-2 text-sm font-medium text-purple-600">
+                                    <i class="fas fa-fire"></i>
+                                    <span>Gen-Z любимец в Корее</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="neo-card p-8 rounded-3xl card-shadow hover-scale">
+                        <div class="flex items-start space-x-6">
+                            <div class="p-4 rounded-2xl health-badge">
+                                <i class="fas fa-heart text-white text-2xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-2xl font-bold mb-3 text-green-600">Healthy & Happy</h4>
+                                <p class="text-gray-700 text-lg leading-relaxed">Легкая хрустинка + тающее послевкусие = Zero guilt, максимум удовольствия! 🌟</p>
+                                <div class="mt-4 flex items-center space-x-2 text-sm font-medium text-green-600">
+                                    <i class="fas fa-leaf"></i>
+                                    <span>Одобрено диетологами</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="text-center">
+                    <div class="relative">
+                        <div class="neo-card p-12 rounded-3xl card-shadow" 
+                            style="background: linear-gradient(135deg, rgba(254, 169, 0, 0.1), rgba(243, 8, 8, 0.1));">
+
+                            <!-- Replaced text with image -->
+                            <img src="images/2.png" 
+                                alt="Milk Classic Product" 
+                                class="mx-auto rounded-3xl" 
+                                style="max-width:100%; height:auto;">
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Flavors Section -->
+    <section class="py-20 px-4 flavors-bg relative overflow-hidden">
+        <div class="absolute inset-0 bg-white bg-opacity-90"></div>
+        <div class="container mx-auto relative z-10">
+            <div class="text-center mb-16 mt-6 md:mt-8">
+                <h2 class="text-5xl font-black mb-6" style="color: var(--brand-red);">
+                    <i class="fas fa-palette mr-4" style="color: var(--brand-yellow);"></i>
+                    3 ВКУСА НА ВЫБОР
+                </h2>
+                <p class="text-xl font-medium text-gray-700 max-w-3xl mx-auto">
+                    Каждый найдет свой идеальный вкус! 🎯 От классики до экспериментов
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-7xl mx-auto">
+                <!-- Milk Flavor -->
+                <div class="neo-card p-8 rounded-3xl text-center card-shadow hover-scale relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-20 h-20 rounded-bl-3xl" style="background: linear-gradient(135deg, var(--brand-blue), rgba(4, 84, 195, 0.3));"></div>
+                    <div class="relative z-10">
+                        <div class="w-24 h-24 rounded-full flex items-center justify-center mx-auto mb-6 floating" style="background: linear-gradient(135deg, var(--brand-blue), #60a5fa);">
+                            <i class="fas fa-glass-whiskey text-4xl text-white"></i>
+                        </div>
+                        <h3 class="text-3xl font-bold mb-4" style="color: var(--brand-blue);">🥛 Молоко</h3>
+                        <p class="text-gray-700 text-lg leading-relaxed mb-6">
+                            Классический выбор мам! Нежный молочный вкус с кремовым послевкусием
+                        </p>
+                        <div class="flex items-center justify-center space-x-2 text-sm font-bold" style="color: var(--brand-blue);">
+                            <i class="fas fa-heart"></i>
+                            <span>Любимец семей</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Banana Flavor -->
+                <div class="neo-card p-8 rounded-3xl text-center card-shadow hover-scale relative overflow-hidden transform md:scale-110">
+                    <div class="absolute top-0 left-0 w-full h-2 rounded-t-3xl" style="background: var(--brand-yellow);"></div>
+                    <div class="absolute -top-2 -right-2 px-3 py-1 rounded-full text-xs font-bold text-white" style="background: var(--cosmic-orange);">
+                        HIT!
+                    </div>
+                    <div class="w-24 h-24 rounded-full flex items-center justify-center mx-auto mb-6 floating" style="background: linear-gradient(135deg, var(--brand-yellow), #fbbf24); animation-delay: 0.5s;">
+                        <i data-lucide="banana" class="w-10 h-10 text-white"></i>
+                    </div>
+                    <h3 class="text-3xl font-bold mb-4" style="color: var(--brand-yellow);">🍌 Банан</h3>
+                    <p class="text-gray-700 text-lg leading-relaxed mb-6">
+                        Gen-Z фаворит! Тропическая сладость, которая заряжает позитивом
+                    </p>
+                    <div class="flex items-center justify-center space-x-2 text-sm font-bold" style="color: var(--cosmic-orange);">
+                        <i class="fas fa-fire"></i>
+                        <span>Trending в TikTok</span>
+                    </div>
+                </div>
+                
+                <!-- Cheese Flavor -->
+                <div class="neo-card p-8 rounded-3xl text-center card-shadow hover-scale relative overflow-hidden">
+                    <div class="absolute bottom-0 left-0 w-20 h-20 rounded-tr-3xl" style="background: linear-gradient(135deg, var(--cosmic-orange), rgba(255, 69, 0, 0.3));"></div>
+                    <div class="relative z-10">
+                        <div class="w-24 h-24 rounded-full flex items-center justify-center mx-auto mb-6 floating" style="background: linear-gradient(135deg, var(--cosmic-orange), #f97316); animation-delay: 1s;">
+                            <i class="fas fa-cheese text-4xl text-white"></i>
+                        </div>
+                        <h3 class="text-3xl font-bold mb-4" style="color: var(--cosmic-orange);">🧀 Сыр</h3>
+                        <p class="text-gray-700 text-lg leading-relaxed mb-6">
+                            Для смелых! Пикантный сырный вкус с богатым послевкусием
+                        </p>
+                        <div class="flex items-center justify-center space-x-2 text-sm font-bold" style="color: var(--cosmic-orange);">
+                            <i class="fas fa-star"></i>
+                            <span>Премиум выбор</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Flavor selector -->
+            <div class="mt-12 text-center">
+                <p class="text-lg font-medium text-white mb-6">
+                    Какой вкус попробуете первым? 🤔
+                </p>
+                <div class="flex justify-center space-x-4">
+                    <button class="px-6 py-3 rounded-full font-bold transition-all duration-300 hover:scale-105" style="background: var(--brand-blue); color: white;">
+                        Молоко
+                    </button>
+                    <button class="px-6 py-3 rounded-full font-bold transition-all duration-300 hover:scale-105" style="background: var(--brand-yellow); color: black;">
+                        Банан
+                    </button>
+                    <button class="px-6 py-3 rounded-full font-bold transition-all duration-300 hover:scale-105" style="background: var(--cosmic-orange); color: white;">
+                        Сыр
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Korea Stats Section -->
+    <section class="py-20 px-4 stats-bg text-white relative overflow-hidden">
+        <div class="absolute inset-0 bg-black bg-opacity-50"></div>
+        <div class="container mx-auto text-center relative z-10">
+            <div class="mb-12">
+                <div class="inline-flex items-center px-6 py-3 rounded-full bg-white bg-opacity-20 backdrop-blur-md mb-6">
+                    <i class="fas fa-globe-asia mr-3 text-2xl" style="color: var(--brand-yellow);"></i>
+                    <span class="font-bold text-lg">КОРЕЙСКИЙ ФЕНОМЕН</span>
+                </div>
+                
+                <h2 class="text-5xl md:text-6xl font-black mb-8 text-shadow leading-tight">
+                    Снек, который покорил<br>
+                    <span style="color: var(--brand-yellow);">50 миллионов корейцев! 🇰🇷</span>
+                </h2>
+                
+                <p class="text-xl md:text-2xl opacity-90 max-w-4xl mx-auto leading-relaxed">
+                    От школьников до офисных работников — вся Корея без ума от Milk Classic!
+                    Теперь этот K-снек завоевывает Казахстан 🚀
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-6xl mx-auto mb-12">
+                <div class="neo-card bg-white bg-opacity-10 backdrop-blur-md p-6 rounded-2xl card-shadow hover-scale">
+                    <div class="text-5xl font-black mb-3" style="color: var(--brand-yellow);">#1</div>
+                    <p class="font-bold text-lg mb-1">Снек в Корее</p>
+                    <p class="text-sm opacity-80">3 года подряд</p>
+                </div>
+                
+                <div class="neo-card bg-white bg-opacity-10 backdrop-blur-md p-6 rounded-2xl card-shadow hover-scale">
+                    <div class="flex items-center justify-center mb-3">
+                        <span class="text-5xl font-black mr-2" style="color: var(--brand-yellow);">5</span>
+                        <i class="fas fa-star text-3xl" style="color: var(--brand-yellow);"></i>
+                    </div>
+                    <p class="font-bold text-lg mb-1">Рейтинг</p>
+                    <p class="text-sm opacity-80">На всех платформах</p>
+                </div>
+                
+                <div class="neo-card bg-white bg-opacity-10 backdrop-blur-md p-6 rounded-2xl card-shadow hover-scale">
+                    <div class="text-5xl font-black mb-3" style="color: var(--brand-yellow);">100%</div>
+                    <p class="font-bold text-lg mb-1">Натурально</p>
+                    <p class="text-sm opacity-80">Здоровый выбор</p>
+                </div>
+                
+                <div class="neo-card bg-white bg-opacity-10 backdrop-blur-md p-6 rounded-2xl card-shadow hover-scale">
+                    <div class="text-5xl font-black mb-3" style="color: var(--brand-yellow);">0</div>
+                    <p class="font-bold text-lg mb-1">Добавок</p>
+                    <p class="text-sm opacity-80">Только польза</p>
+                </div>
+            </div>
+            
+            <!-- Social proof -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+                <div class="neo-card bg-white bg-opacity-10 backdrop-blur-md p-6 rounded-2xl">
+                    <i class="fas fa-heart text-3xl mb-4" style="color: var(--brand-red);"></i>
+                    <h3 class="font-bold text-xl mb-2">Мамы доверяют</h3>
+                    <p class="text-sm opacity-90">"Даю детям без опасений - состав чистый!"</p>
+                </div>
+                
+                <div class="neo-card bg-white bg-opacity-10 backdrop-blur-md p-6 rounded-2xl">
+                    <i class="fas fa-fire text-3xl mb-4" style="color: var(--cosmic-orange);"></i>
+                    <h3 class="font-bold text-xl mb-2">Gen-Z в восторге</h3>
+                    <p class="text-sm opacity-90">"Лучший снек для учебы и работы! 💯"</p>
+                </div>
+                
+                <div class="neo-card bg-white bg-opacity-10 backdrop-blur-md p-6 rounded-2xl">
+                    <i class="fas fa-medal text-3xl mb-4" style="color: var(--brand-yellow);"></i>
+                    <h3 class="font-bold text-xl mb-2">Эксперты одобряют</h3>
+                    <p class="text-sm opacity-90">"Инновационная технология выпечки!"</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Animated background elements -->
+        <div class="absolute inset-0 opacity-10">
+            <div class="absolute top-20 left-20 floating">
+                <i class="fas fa-cookie text-6xl" style="color: var(--brand-yellow);"></i>
+            </div>
+            <div class="absolute bottom-20 right-20 floating" style="animation-delay: 1.5s;">
+                <i class="fas fa-star text-5xl" style="color: var(--brand-red);"></i>
+            </div>
+            <div class="absolute top-1/2 left-10 floating" style="animation-delay: 0.8s;">
+                <i class="fas fa-heart text-4xl" style="color: var(--cosmic-orange);"></i>
+            </div>
+        </div>
+    </section>
+
+    <!-- Order Section -->
+    <section id="order" class="py-20 px-4 relative overflow-hidden" style="background: linear-gradient(135deg, #000000, #1a1a1a);">
+        <div class="absolute inset-0 bg-gradient-to-br from-red-900/20 via-blue-900/20 to-yellow-900/20"></div>
+        <div class="container mx-auto text-center relative z-10">
+            <div class="mb-12">
+                <h2 class="text-5xl md:text-6xl font-black mb-6 text-white text-shadow">
+                    Попробуй прямо сейчас! 
+                    <span style="color: var(--brand-yellow);">🛒</span>
+                </h2>
+                <p class="text-xl md:text-2xl mb-8 text-white opacity-90 max-w-4xl mx-auto leading-relaxed">
+                    Стань частью K-тренда! Миллионы корейцев уже выбрали Milk Classic.
+                    <br>Теперь твоя очередь ощутить этот вкус! 🇰🇷➡️🇰🇿
+                </p>
+            </div>
+            
+            <!-- Pricing Card -->
+            <div class="max-w-2xl mx-auto mb-12">
+                <div class="neo-card p-8 rounded-3xl card-shadow relative overflow-hidden">
+                    <div class="absolute top-0 left-0 w-full h-1 brand-gradient"></div>
+                    
+                    <!-- Special Offer Badge -->
+                    <div class="absolute -top-3 -right-3 px-4 py-2 rounded-full text-white font-bold text-sm" style="background: var(--cosmic-orange);">
+                        <i class="fas fa-fire mr-1"></i>LAUNCH OFFER!
+                    </div>
+                    
+                    <div class="space-y-6">
+                        <div class="flex items-center justify-between text-lg">
+                            <div class="flex items-center space-x-3">
+                                <i class="fas fa-box text-2xl" style="color: var(--brand-blue);"></i>
+                                <span class="font-semibold">Milk Classic (упаковка 112гр)</span>
+                            </div>
+                            <div class="text-right">
+                                <span class="text-gray-400 line-through text-sm">945 ₸</span>
+                                <span class="font-bold text-2xl ml-2" style="color: var(--brand-red);">845 ₸</span>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center justify-between text-lg">
+                            <div class="flex items-center space-x-3">
+                                <i class="fas fa-truck text-2xl text-green-500"></i>
+                                <span>Быстрая доставка</span>
+                            </div>
+                            <span class="text-green-500 font-bold">БЕСПЛАТНО</span>
+                        </div>
+                        
+                        <div class="flex items-center justify-between text-lg">
+                            <div class="flex items-center space-x-3">
+                                <i class="fas fa-gift text-2xl" style="color: var(--brand-yellow);"></i>
+                                <span>Сюрприз внутри</span>
+                            </div>
+                            <span style="color: var(--brand-yellow);" class="font-bold">✨ БОНУС</span>
+                        </div>
+                        
+                        <hr class="border-gray-200">
+                        
+                        <div class="flex items-center justify-between text-2xl font-bold">
+                            <span>Итого к оплате</span>
+                            <span style="color: var(--brand-red);"> 845 ₸</span>
+                        </div>
+                        
+                        <p class="text-sm text-gray-600">
+                            💰 Экономия 100 ₸ • 🎯 Только для первых 100 покупателей
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Order Buttons -->
+            <div class="space-y-6">
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a
+                    href="https://wa.me/77000221948?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5%21%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%B7%D0%B0%D0%BA%D0%B0%D0%B7%D0%B0%D1%82%D1%8C%20Atlantys%20%28%D1%80%D0%B8%D1%81%D0%BE%D0%B2%D1%8B%D0%B5%20%D1%81%D0%BD%D0%B5%D0%BA%D0%B8%29"
+                    target="_blank"
+                    rel="noopener"
+                    class="px-12 py-5 rounded-full font-black text-xl transition-all duration-300 hover-scale pulse-glow"
+                    style="background: var(--brand-yellow); color: #000;"
+                    >
+                    <i class="fab fa-whatsapp mr-3"></i>
+                    ЗАКАЗАТЬ СЕЙЧАС
+                    </a>
+
+                </div>
+                
+                <!-- Trust badges -->
+                <div class="flex flex-wrap justify-center items-center gap-6 pt-8">
+                    <div class="flex items-center space-x-2 text-white opacity-80">
+                        <i class="fas fa-shield-alt" style="color: var(--brand-blue);"></i>
+                        <span class="text-sm font-medium">Гарантия качества</span>
+                    </div>
+                    <div class="flex items-center space-x-2 text-white opacity-80">
+                        <i class="fas fa-clock" style="color: var(--brand-yellow);"></i>
+                        <span class="text-sm font-medium">Доставка 1-3 дня</span>
+                    </div>
+                    <div class="flex items-center space-x-2 text-white opacity-80">
+                        <i class="fas fa-undo-alt" style="color: var(--brand-red);"></i>
+                        <span class="text-sm font-medium">Возврат 100%</span>
+                    </div>
+                    <div class="flex items-center space-x-2 text-white opacity-80">
+                        <i class="fas fa-heart" style="color: var(--cosmic-orange);"></i>
+                        <span class="text-sm font-medium">Loved by Gen-Z</span>
+                    </div>
+                </div>
+                
+                <!-- Urgency -->
+                <div class="mt-8 p-4 bg-gradient-to-r from-red-900/30 to-orange-900/30 rounded-2xl border border-red-500/20">
+                    <p class="text-white font-bold">
+                        <i class="fas fa-fire mr-2" style="color: var(--cosmic-orange);"></i>
+                        Осталось всего <span style="color: var(--brand-yellow);">127 упаковок</span> по акционной цене!
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black text-white py-16 px-4 relative overflow-hidden">
+        <!-- Parallax background image layer -->
+        <div style="position:absolute; inset:0">
+            <img src="images/footer-bg.jpg" alt="" class="w-full h-full object-cover" loading="lazy">
+            <!-- Darken for contrast; NOT using class 'absolute' to avoid double parallax -->
+            <div style="position:absolute; inset:0; background: rgba(0,0,0,.55)"></div>
+        </div>
+
+        <div class="container mx-auto relative z-10">
+            <!-- Main Footer Content -->
+            <div class="text-center mb-12">
+                <div class="flex items-center justify-center space-x-4 mb-6">
+                    <div class="p-3 rounded-2xl" style="background: var(--brand-red);">
+                        <i class="fas fa-star text-2xl text-white"></i>
+                    </div>
+                    <h3 class="text-4xl font-black">Milk Classic</h3>
+                    <div class="p-3 rounded-2xl" style="background: var(--brand-yellow);">
+                        <i class="fas fa-heart text-2xl" style="color: var(--brand-red);"></i>
+                    </div>
+
+                </div>
+                <p class="text-xl font-medium text-gray-300 mb-8">
+                    Корейский бестселлер, который завоевывает сердца казахстанцев 🇰🇷❤️🇰🇿
+                </p>
+                
+                <!-- Social Media -->
+                <div class="flex justify-center space-x-6 mb-8">
+                    <a href="#" class="w-14 h-14 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110" style="background: linear-gradient(135deg, var(--brand-red), var(--cosmic-orange));">
+                        <i class="fab fa-instagram text-xl text-white"></i>
+                    </a>
+                    <a href="#" class="w-14 h-14 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110" style="background: linear-gradient(135deg, var(--brand-blue), var(--brand-yellow));">
+                        <i class="fab fa-telegram text-xl text-white"></i>
+                    </a>
+                    <a href="#" class="w-14 h-14 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110" style="background: linear-gradient(135deg, var(--brand-yellow), var(--cosmic-orange));">
+                        <i class="fab fa-tiktok text-xl text-black"></i>
+                    </a>
+                    <a href="#" class="w-14 h-14 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 bg-green-500">
+                        <i class="fab fa-whatsapp text-xl text-white"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Footer Links -->
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+                <div class="text-center md:text-left">
+                    <h4 class="font-bold text-lg mb-4 flex items-center justify-center md:justify-start">
+                        <i class="fas fa-cookie mr-2" style="color: var(--brand-yellow);"></i>
+                        Продукт
+                    </h4>
+                    <ul class="space-y-3 text-gray-300">
+                        <li><a href="#" class="hover:text-white transition-colors">О Milk Classic</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Состав и польза</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Пищевая ценность</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Сертификаты</a></li>
+                    </ul>
+                </div>
+                
+                <div class="text-center md:text-left">
+                    <h4 class="font-bold text-lg mb-4 flex items-center justify-center md:justify-start">
+                        <i class="fas fa-shopping-cart mr-2" style="color: var(--brand-red);"></i>
+                        Заказ
+                    </h4>
+                    <ul class="space-y-3 text-gray-300">
+                        <li><a href="#" class="hover:text-white transition-colors">Как заказать</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Доставка по Казахстану</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Способы оплаты</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Оптовые заказы</a></li>
+                    </ul>
+                </div>
+                
+                <div class="text-center md:text-left">
+                    <h4 class="font-bold text-lg mb-4 flex items-center justify-center md:justify-start">
+                        <i class="fas fa-users mr-2" style="color: var(--brand-blue);"></i>
+                        Сообщество
+                    </h4>
+                    <ul class="space-y-3 text-gray-300">
+                        <li><a href="#" class="hover:text-white transition-colors">Отзывы мам</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Gen-Z истории</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Конкурсы</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Партнерство</a></li>
+                    </ul>
+                </div>
+                
+                <div class="text-center md:text-left">
+                    <h4 class="font-bold text-lg mb-4 flex items-center justify-center md:justify-start">
+                        <i class="fas fa-headset mr-2" style="color: var(--cosmic-orange);"></i>
+                        Поддержка
+                    </h4>
+                    <ul class="space-y-3 text-gray-300">
+                        <li><a href="#" class="hover:text-white transition-colors">Контакты</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">FAQ</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Возврат/обмен</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Помощь 24/7</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Bottom Footer -->
+            <div class="border-t border-gray-800 pt-8">
+                <div class="flex flex-col md:flex-row items-center justify-between">
+                    <div class="text-gray-400 mb-4 md:mb-0">
+                        <p>&copy; 2025 Atlantys. Все права защищены.</p>
+                        <p class="text-sm mt-1">Официальный дистрибьютор корейского бренда в РК</p>
+                    </div>
+                    
+                    <div class="flex items-center space-x-6 text-gray-400 text-sm">
+                        <a href="#" class="hover:text-white transition-colors">Политика конфиденциальности</a>
+                        <a href="#" class="hover:text-white transition-colors">Пользовательское соглашение</a>
+                        <span class="flex items-center">
+                            <i class="fas fa-heart mr-1" style="color: var(--brand-red);"></i>
+                            Made with love for Gen-Z & Moms
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Decorative elements -->
+        <div class="absolute bottom-0 left-0 w-32 h-32 opacity-5 floating">
+            <i class="fas fa-cookie text-9xl" style="color: var(--brand-yellow);"></i>
+        </div>
+        <div class="absolute top-0 right-0 w-24 h-24 opacity-5 floating" style="animation-delay: 1s;">
+            <i class="fas fa-star text-6xl" style="color: var(--brand-red);"></i>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="js/main.js"></script>
+
+    <!-- in <head> or before </body> -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <script>
+    // turns all data-lucide="..." elements into inline SVGs
+    lucide.createIcons();
+    </script>
+
+</body>
+</html>
